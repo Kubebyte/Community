@@ -1,370 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Kubebyte Community Website</title>
-<style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-    margin: 0; padding: 0;
-  }
-  html, body {
-    height: 100%;
-    overflow-x: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0b0c10;
-    color: #eee;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #08f;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Preloader */
-  #preloader {
-    position: fixed;
-    inset: 0;
-    background: #0b0c10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    font-size: 1.5rem;
-    color: #08f;
-    user-select: none;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-  }
-  
-  /* Container for all sections */
-  main {
-    position: relative;
-    z-index: 10;
-    max-width: 1200px;
-    margin: auto;
-    padding: 2rem 1rem 6rem;
-  }
-  
-  section {
-    min-height: 100vh;
-    padding: 3rem 1rem;
-    scroll-margin-top: 70px;
-    border-bottom: 1px solid #222;
-    position: relative;
-  }
-  
-  h1, h2 {
-    font-weight: 800;
-    letter-spacing: 0.05em;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.4em;
-    color: #0ff;
-    text-shadow: 0 0 8px #0ff66;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #0cf;
-  }
-  
-  /* Make all text (except headers) white */
-  p, ul, li, input, textarea, a {
-    color: #fff;
-  }
-  
-  p, ul {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 700px;
-    margin-bottom: 1.6rem;
-  }
-  ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-  }
-  
-  /* Buttons and links */
-  .btn {
-    display: inline-block;
-    background: #0ff;
-    color: #000;
-    padding: 0.75rem 1.4rem;
-    border-radius: 0.35rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    user-select: none;
-  }
-  .btn:hover {
-    background: #06c;
-    color: #fff;
-  }
-  
-  /* Contact form */
-  form {
-    max-width: 600px;
-    margin-top: 1rem;
-  }
-  input, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 0.3rem;
-    font-size: 1rem;
-    font-family: inherit;
-    background: #121518;
-    color: #eee;
-    box-shadow: inset 0 0 5px #0ff;
-    resize: vertical;
-  }
-  input::placeholder, textarea::placeholder {
-    color: #555;
-  }
-  textarea {
-    min-height: 120px;
-  }
-  
-  /* Social links */
-  .social-links {
-    display: flex;
-    gap: 1.2rem;
-    margin-top: 1rem;
-  }
-  .social-links a {
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: #0ff;
-    padding: 0.25rem 0.5rem;
-    border: 1.5px solid #0ff;
-    border-radius: 0.3rem;
-    transition: background 0.3s ease;
-  }
-  .social-links a:hover {
-    background: #0ff;
-    color: #000;
-  }
-  
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0b0c10;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #0ff;
-    border-radius: 4px;
-  }
-  
-  /* 3D Canvas */
-  #bg-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 1;
-    pointer-events: none;
-  }
-  
-  /* Parallax and text animations */
-  .fadein {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-  }
-  .fadein.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    h1 {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kubebyte Studios – Roblox Game Development</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+      position: relative;
+      z-index: 10;
+    }
+    header {
+      background-color: rgba(17, 17, 17, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+      padding: 20px 0;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
       font-size: 2rem;
+      font-weight: 800;
+      color: #00ffcc;
+      user-select: none;
     }
-    h2 {
-      font-size: 1.6rem;
+    .nav-links {
+      display: flex;
+      gap: 30px;
     }
-  }
-  @media (max-width: 480px) {
-    main {
-      padding: 1rem 0.5rem 4rem;
+    .nav-links a {
+      font-weight: 600;
+      transition: all 0.3s;
     }
-    p, ul {
+    .nav-links a:hover {
+      color: #00ffcc;
+      transform: scale(1.1);
+    }
+
+    /* Video background */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(to right, #121212, #1c1c1c);
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, #00ffcc, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      border: none;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover {
+      background-color: #00ddaa;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: #00ffcc;
+      user-select: none;
+    }
+
+    .features,
+    .team,
+    .portfolio,
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .feature,
+    .member,
+    .project,
+    .contact-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      user-select: none;
+    }
+
+    .feature:hover,
+    .member:hover,
+    .project:hover,
+    .contact-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 255, 204, 0.2);
+    }
+
+    .feature h3,
+    .member h3,
+    .project h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+
+    .feature p,
+    .member p,
+    .project p {
+      color: #aaa;
+    }
+
+    /* Portfolio images */
+    .project img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -ms-user-drag: none;
+      user-drag: none;
+    }
+
+    .footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 50px 0;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #1f1f1f;
+      user-select: none;
+      position: relative;
+      z-index: 10;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+      user-select: none;
+    }
+    input,
+    textarea,
+    button {
+      padding: 12px;
       font-size: 1rem;
+      border-radius: 6px;
+      border: none;
     }
-    .social-links {
-      flex-wrap: wrap;
+    input,
+    textarea {
+      background: #0f0f0f;
+      color: #fff;
+      resize: vertical;
     }
-  }
-</style>
+    button[type='submit'] {
+      background: #00ffcc;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type='submit']:hover {
+      background: #00ddaa;
+    }
+  </style>
 </head>
 <body>
+  <!-- Background Video -->
+  <video
+    id="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    src="https://cdn.pixabay.com/vimeo/371776248/green-blue-cube-rotating-24048.mp4"
+  ></video>
 
-<div id="preloader">LOADING KUBE BYTE...</div>
-
-<canvas id="bg-canvas"></canvas>
-
-<main>
-  <section id="about" class="fadein">
-    <h1>About Kubebyte</h1>
-    <p>
-    <strong>
-Kubebyte is a dynamic and forward thinking Roblox game development collective dedicated to redefining the boundaries of interactive entertainment. With a deep passion for innovation, creativity and community driven experiences, we craft immersive worlds that captivate players and leave a lasting impact.
-Our mission is to push the limits of what is possible on the Roblox platform, harnessing cutting edge technology and groundbreaking game design to create unforgettable adventures. We believe that gaming is more than just an activity. It is an opportunity to connect, inspire and build thriving communities where imagination knows no bounds.
-At Kubebyte, we challenge conventions, experiment with new mechanics and embrace bold ideas to bring our visions to life. Whether it is designing breathtaking environments, developing intricate gameplay systems or fostering player engagement through collaborative storytelling, we are committed to delivering high quality, innovative gaming experiences that resonate with players worldwide.
-Join us on our journey as we shape the future of Roblox gaming, one extraordinary creation at a time! 🚀
-</strong>
-
-    </p>
-  </section>
-
-  <section id="projects" class="fadein">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Project Aurora:</strong> Next-gen Roblox open-world RPG with dynamic weather and AI.</li>
-      <li><strong>Kubebyte Tycoon:</strong> Scalable tycoon simulator with custom UGC integration.</li>
-      <li><strong>Future Titles:</strong> Exploring VR & AR hybrid Roblox experiences.</li>
-    </ul>
-  </section>
-
-  <section id="developers" class="fadein">
-    <h2>Developers</h2>
-    <ul>
-      <li><strong>Alex “ByteMaster” - Lead Developer:</strong> Gameplay & systems architect.</li>
-      <li><strong>Sam “ShaderX” - Graphics Programmer:</strong> 3D visuals & shader wizard.</li>
-      <li><strong>Riley “UIPro” - UI/UX Designer:</strong> Interactive design and community liaison.</li>
-    </ul>
-  </section>
-
-  <section id="vision" class="fadein">
-    <h2>Vision & Mission</h2>
-    <p>
-      <p>
-<strong>
-  Our mission is to transform the landscape of Roblox gaming by crafting high quality, deeply immersive and community driven experiences that set new standards for innovation.
-  Kubebyte is committed to pushing the boundaries of creativity and technical excellence, ensuring that every game we create is not just engaging but truly groundbreaking. We strive to be the benchmark for originality, engineering mastery and player centered design, fostering a thriving community where imagination and collaboration flourish.
-  Through bold ideas and meticulous attention to detail, we aim to inspire, challenge and elevate the gaming experience, delivering worlds that captivate, stories that resonate and gameplay that keeps players coming back for more! 💫
-</strong>
-</p>
-    </p>
-  </section>
-
-  <section id="contact" class="fadein">
-    <h2>Find & Contact Us</h2>
-    <p>Email: <a href="mailto:kubebyte@gmail.com">kubebyte@gmail.com</a></p>
-    <div class="social-links">
-      <a href="https://discord.gg/7Cc4Bhuf" target="_blank" rel="noopener noreferrer">Discord</a>
-      <a href="https://x.com/kubebyte" target="_blank" rel="noopener noreferrer">Twitter</a>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Kubebyte</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
     </div>
-    <form id="contact-form" method="POST" action="mailto:kubebyte@gmail.com" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required autocomplete="off" />
-      <input type="email" name="email" placeholder="Your Email" required autocomplete="off" />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+  </header>
+
+  <section class="hero animate__animated animate__fadeIn">
+    <h1>Kubebyte Studios</h1>
+    <p>
+      Building high-quality Roblox games for millions of players worldwide.
+      Join the revolution in immersive and fun game development.
+    </p>
+    <button>Explore Our Work</button>
   </section>
-</main>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
-<script>
-  // Preloader
-  window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    preloader.style.opacity = 0;
-    setTimeout(() => preloader.style.display = 'none', 700);
-  });
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="features">
+        <div class="feature animate__animated animate__zoomIn">
+          <h3>Professional Design</h3>
+          <p>UI/UX design crafted to keep players engaged.</p>
+        </div>
+        <div class="feature animate__animated animate__fadeInUp">
+          <h3>Optimized Performance</h3>
+          <p>Games run smoothly on all Roblox-supported devices.</p>
+        </div>
+        <div class="feature animate__animated animate__lightSpeedInLeft">
+          <h3>Custom Scripting</h3>
+          <p>Advanced systems built with Lua for unique experiences.</p>
+        </div>
+        <div class="feature animate__animated animate__flipInY">
+          <h3>Scalable Architecture</h3>
+          <p>Games designed to scale from 100 to 10 million players.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Fade in on scroll
-  const faders = document.querySelectorAll('.fadein');
-  const options = { threshold: 0.2 };
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Our Projects</h2>
+      <div class="portfolio">
+        <div class="project animate__animated animate__slideInLeft">
+          <img
+            src="https://i.postimg.cc/d1RLRPnz/download-1.png"
+            alt="Bee Factory Tycoon"
+            draggable="false"
+            oncontextmenu="return false"
+          />
+          <h3>Bee Factory Tycoon</h3>
+          <p>One of the top-rated tycoon games with 5.8M+ visits.</p>
+        </div>
+        <div class="project animate__animated animate__zoomIn">
+          <img
+            src="https://i.postimg.cc/59Hrt477/Buy-My-UGC.png"
+            alt="Buy My UGC"
+            draggable="false"
+            oncontextmenu="return false"
+          />
+          <h3>Buy My UGC</h3>
+          <p>Soon..</p>
+        </div>
+        <div class="project animate__animated animate__slideInRight">
+          <h3>Soon..</h3>
+          <p>Soon..</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2 class="section-title">Meet The Team</h2>
+      <div class="team">
+        <div class="member animate__animated animate__fadeInLeft">
+          <h3>@8Sidee</h3>
+          <p>Lead Developer, Publisher & Designer</p>
+        </div>
+        <div class="member animate__animated animate__fadeInUp">
+          <h3>@NiftyyD</h3>
+          <p>Community Manager & Marketing</p>
+        </div>
+        <div class="member animate__animated animate__fadeInRight">
+          <h3>@Pixleygon</h3>
+          <p>Modeler & Game Designer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <form>
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Your message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Kubebyte Studios, all rights reserved.
+  </footer>
+
+  <script>
+    // Prevent right-click and drag on all images
+    document.addEventListener('DOMContentLoaded', () => {
+      const imgs = document.querySelectorAll('img');
+      imgs.forEach(img => {
+        img.addEventListener('contextmenu', e => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
     });
-  }, options);
-  faders.forEach(fader => appearOnScroll.observe(fader));
-
-  // Three.js background scene setup
-  const canvas = document.getElementById('bg-canvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x0b0c10, 0); // transparent bg
-
-  const scene = new THREE.Scene();
-
-  // Camera with slight parallax effect
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-  camera.position.z = 50;
-
-  // Create geometry points (like stars or cubes)
-  const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-  const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, roughness: 0.3, metalness: 0.7 });
-
-  const group = new THREE.Group();
-  scene.add(group);
-
-  // Add multiple cubes scattered in space
-  for(let i = 0; i < 200; i++) {
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(
-      (Math.random() - 0.5) * 200,
-      (Math.random() - 0.5) * 200,
-      (Math.random() - 0.5) * 200
-    );
-    group.add(cube);
-  }
-
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0x00ffff, 0.3);
-  scene.add(ambientLight);
-
-  const pointLight = new THREE.PointLight(0x00ffff, 1.2);
-  pointLight.position.set(50, 50, 50);
-  scene.add(pointLight);
-
-  // Animate cubes rotation and slight camera parallax
-  function animate(time=0){
-    time *= 0.001; // seconds
-    group.rotation.x = time * 0.07;
-    group.rotation.y = time * 0.09;
-
-    // Parallax camera movement on mouse
-    const mouseX = (window.mouseX || 0) / window.innerWidth * 2 - 1;
-    const mouseY = (window.mouseY || 0) / window.innerHeight * 2 - 1;
-    camera.position.x += (mouseX * 20 - camera.position.x) * 0.05;
-    camera.position.y += (-mouseY * 20 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  requestAnimationFrame(animate);
-
-  window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-  });
-
-  // Track mouse for parallax
-  window.addEventListener('mousemove', (e) => {
-    window.mouseX = e.clientX;
-    window.mouseY = e.clientY;
-  });
-</script>
-
+  </script>
 </body>
 </html>
