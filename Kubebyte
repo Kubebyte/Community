@@ -1,1 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kubebyte Studios – Roblox Game Development</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+      position: relative;
+      z-index: 10;
+    }
+    header {
+      background-color: rgba(17, 17, 17, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+      padding: 20px 0;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #00ffcc;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .nav-links a:hover {
+      color: #00ffcc;
+      transform: scale(1.1);
+    }
 
+    /* Video background */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(to right, #121212, #1c1c1c);
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, #00ffcc, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      border: none;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover {
+      background-color: #00ddaa;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: #00ffcc;
+      user-select: none;
+    }
+
+    .features,
+    .team,
+    .portfolio,
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .feature,
+    .member,
+    .project,
+    .contact-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      user-select: none;
+    }
+
+    .feature:hover,
+    .member:hover,
+    .project:hover,
+    .contact-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 255, 204, 0.2);
+    }
+
+    .feature h3,
+    .member h3,
+    .project h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+
+    .feature p,
+    .member p,
+    .project p {
+      color: #aaa;
+    }
+
+    /* Portfolio images */
+    .project img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -ms-user-drag: none;
+      user-drag: none;
+    }
+
+    .footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 50px 0;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #1f1f1f;
+      user-select: none;
+      position: relative;
+      z-index: 10;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+      user-select: none;
+    }
+    input,
+    textarea,
+    button {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+    }
+    input,
+    textarea {
+      background: #0f0f0f;
+      color: #fff;
+      resize: vertical;
+    }
+    button[type='submit'] {
+      background: #00ffcc;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type='submit']:hover {
+      background: #00ddaa;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video
+    id="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    src="https://cdn.pixabay.com/vimeo/371776248/green-blue-cube-rotating-24048.mp4"
+  ></video>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Kubebyte</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero animate__animated animate__fadeIn">
+    <h1>Kubebyte Studios</h1>
+    <p>
+      Building high-quality Roblox games for millions of players worldwide.
+      Join the revolution in immersive and fun game development.
+    </p>
+    <button>Explore Our Work</button>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="features">
+        <div class="feature animate__animated animate__zoomIn">
+          <h3>Professional Design</h3>
+          <p>UI/UX design crafted to keep players engaged.</p>
+        </div>
+        <div class="feature animate__animated animate__fadeInUp">
+          <h3>Optimized Performance</h3>
+          <p>Games run smoothly on all Roblox-supported devices.</p>
+        </div>
+        <div class="feature animate__animated animate__lightSpeedInLeft">
+          <h3>Custom Scripting</h3>
+          <p>Advanced systems built with Lua for unique experiences.</p>
+        </div>
+        <div class="feature animate__animated animate__flipInY">
+          <h3>Scalable Architecture</h3>
+          <p>Games designed to scale from 100 to 10 million players.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Our Projects</h2>
+      <div class="portfolio">
+        <div class="project animate__animated animate__slideInLeft">
+          <img
+            src="https://i.postimg.cc/d1RLRPnz/download-1.png"
+            alt="Bee Factory Tycoon"
+            draggable="false"
+            oncontextmenu="return false"
+          />
+          <h3>Bee Factory Tycoon</h3>
+          <p>One of the top-rated tycoon games with 5.8M+ visits.</p>
+        </div>
+        <div class="project animate__animated animate__zoomIn">
+          <img
+            src="https://i.postimg.cc/59Hrt477/Buy-My-UGC.png"
+            alt="Buy My UGC"
+            draggable="false"
+            oncontextmenu="return false"
+          />
+          <h3>Buy My UGC</h3>
+          <p>Soon..</p>
+        </div>
+        <div class="project animate__animated animate__slideInRight">
+          <h3>Soon..</h3>
+          <p>Soon..</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2 class="section-title">Meet The Team</h2>
+      <div class="team">
+        <div class="member animate__animated animate__fadeInLeft">
+          <h3>@8Sidee</h3>
+          <p>Lead Developer, Publisher & Designer</p>
+        </div>
+        <div class="member animate__animated animate__fadeInUp">
+          <h3>@NiftyyD</h3>
+          <p>Community Manager & Marketing</p>
+        </div>
+        <div class="member animate__animated animate__fadeInRight">
+          <h3>@Pixleygon</h3>
+          <p>Modeler & Game Designer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <form>
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Your message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Kubebyte Studios, all rights reserved.
+  </footer>
+
+  <script>
+    // Prevent right-click and drag on all images
+    document.addEventListener('DOMContentLoaded', () => {
+      const imgs = document.querySelectorAll('img');
+      imgs.forEach(img => {
+        img.addEventListener('contextmenu', e => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
+    });
+  </script>
+</body>
+</html>
